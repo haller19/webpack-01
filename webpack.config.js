@@ -38,11 +38,13 @@ const TerserPlugin = require('terser-webpack-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
-	mode: 'development',
+	mode: 'production',
 
 	plugins: [
 		new webpack.ProgressPlugin(),
-		new MiniCssExtractPlugin({ filename: 'style.[chunkhash].css' }),
+		new MiniCssExtractPlugin({
+			filename: 'style.[chunkhash].css'
+		}),
 		new workboxPlugin.GenerateSW({
 			swDest: 'sw.js',
 			clientsClaim: true,
@@ -51,8 +53,7 @@ module.exports = {
 	],
 
 	module: {
-		rules: [
-			{
+		rules: [{
 				test: /.(js|jsx)$/,
 				include: [],
 				loader: 'babel-loader'
@@ -60,8 +61,7 @@ module.exports = {
 			{
 				test: /.css$/,
 
-				use: [
-					{
+				use: [{
 						loader: MiniCssExtractPlugin.loader
 					},
 					{
@@ -95,5 +95,12 @@ module.exports = {
 			minSize: 30000,
 			name: true
 		}
+	},
+	resolve: {
+		extensions: ['.js', '.jsx']
+	},
+	externals: {
+		jquery: 'jQuery'
 	}
+
 };
