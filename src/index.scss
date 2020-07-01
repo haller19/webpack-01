@@ -8,16 +8,18 @@ https://getbootstrap.com/docs/4.0/getting-started/theming/#sass-options
 $enable-rounded: false;
 
 // テーマカラー設定
-$theme-colors: ("primary": #C51162);
+$theme-colors: ("primary": #c51162,
+);
 
 // ヒーロースペースの背景色
 $jumbotron-bg: #d9f5ff;
 
 // フォントを変える
-$font-family-base: serif;
+// $font-family-base: serif;
 
 /* Bootstrap を読み込む */
 @import "~bootstrap/scss/bootstrap.scss";
+@import "original";
 
 /* 自分のスタイルを書いていく */
 body {
